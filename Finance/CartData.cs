@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 
 namespace WebShop.Finance
 {
+    /// <summary>
+    /// Data for carts.
+    /// </summary>
     public class CartData
     {
-        public int Quantitiy { get; set; }
+        public int Quantity { get; set; }
         public string ProductName { get; set; }
         public string RelatedProduct { get; set; }
         public double ProductPrice { get; set; }
-        public double DiscountPrice { get; set; }
         public int DiscountQuantity { get; set; }
         public double DiscountAmount { get; set; }
-        public double DiscountPercent { get; set; }
         public int ButterQuantity { get; set; }
     }
 }

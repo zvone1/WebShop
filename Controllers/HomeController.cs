@@ -99,7 +99,7 @@ namespace WebShop.Controllers
                 CartData cartData = new CartData
                 {
                     ProductName = ProductNames.Butter,
-                    Quantitiy = products.ButterQuantity
+                    Quantity = products.ButterQuantity
                 };
                 products.PriceButter = Math.Round(calculations.CalculatePrice(cartData).ProductPrice, 2);
             }
@@ -110,7 +110,7 @@ namespace WebShop.Controllers
                 CartData cartData = new CartData()
                 {
                     ProductName = ProductNames.Milk,
-                    Quantitiy = products.MilkQuantity
+                    Quantity = products.MilkQuantity
                 };
 
                 products.PriceMilk = Math.Round(calculations.CalculatePrice(cartData).ProductPrice, 2);
@@ -118,7 +118,7 @@ namespace WebShop.Controllers
                 products.MilkDiscountQuantity = calculations.CalculatePrice(cartData).DiscountQuantity;
 
             }
-            //Isključi autentifikaciju i ostale stvari.
+
             if (HttpContext.Session.GetInt32("cartBread") != null)
             {
                 products.BreadQuantity = HttpContext.Session.GetInt32("cartBread").Value;
@@ -126,7 +126,7 @@ namespace WebShop.Controllers
                 CartData cartData = new CartData()
                 {
                     ProductName = ProductNames.Bread,
-                    Quantitiy = products.BreadQuantity,
+                    Quantity = products.BreadQuantity,
                     ButterQuantity = products.ButterQuantity
                 };
 

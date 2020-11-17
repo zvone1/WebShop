@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebShop.Finance
 {
+    /// <summary>
+    /// Holds data for particular products.
+    /// </summary>
     internal static class Discounts
     {
         internal const double Bread = 0.5;

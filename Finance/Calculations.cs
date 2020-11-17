@@ -11,38 +11,36 @@ namespace WebShop.Finance
         /// <summary>
         /// Calculate price of products.
         /// </summary>
-        /// <param name="cartData.ProductName">Type of the product.</param>
-        /// <param name="cartData.CartTotal">Amount of certain product as INT</param>
+        /// <param name="cartData"></param>
         /// <returns></returns>
-        //public double CalculatePrice(string cartData.ProductName, int cartData.CartTotal, string relatedProduct = "")
         public CartData CalculatePrice(CartData cartData)
         {
 
             if (cartData.ProductName.Equals(ProductNames.Butter))
             {
 
-                cartData.ProductPrice = cartData.Quantitiy * ProductsPrices.Butter;
+                cartData.ProductPrice = cartData.Quantity * ProductsPrices.Butter;
             }
 
             if (cartData.ProductName.Equals(ProductNames.Milk))
             {
-                if (cartData.ProductName.Equals(ProductNames.Milk) && cartData.Quantitiy > 3)
+                if (cartData.ProductName.Equals(ProductNames.Milk) && cartData.Quantity > 3)
                 {
-                    int freeProducts = cartData.Quantitiy / 3;
+                    int freeProducts = cartData.Quantity / 3; //Calculate discount based on requested amount of "milk" product.
                     double discountedPrice = 0;
 
-                    if (cartData.Quantitiy != 0)
+                    if (cartData.Quantity != 0)
                     {
                         cartData.DiscountQuantity = freeProducts;
                         cartData.DiscountAmount = Discounts.Milk;
                     }
 
-                    int payedProducts = cartData.Quantitiy - freeProducts;
+                    int payedProducts = cartData.Quantity - freeProducts;
                     cartData.ProductPrice = (ProductsPrices.Milk * payedProducts) + discountedPrice;
                 }
                 else
                 {
-                    cartData.ProductPrice = cartData.Quantitiy * ProductsPrices.Milk;
+                    cartData.ProductPrice = cartData.Quantity * ProductsPrices.Milk;
                 }
 
                 return cartData;
@@ -58,10 +56,11 @@ namespace WebShop.Finance
                     cartData.DiscountAmount = Discounts.Bread;
                 }
 
-                if (discountActive.Equals(ProductNames.Butter))
+                //Apply discount for "bread" if "butter" is inside cart.
+                if (discountActive.Equals(ProductNames.Butter)) //
                 {
                     int freeProducts = cartData.ButterQuantity / 2;
-                    int standardProducts = cartData.Quantitiy / 2;
+                    int standardProducts = cartData.Quantity / 2;
                     double discountedPrice = 0;
                     if (freeProducts != 0)
                     {
@@ -69,7 +68,7 @@ namespace WebShop.Finance
                         discountedPrice = freeProducts * ProductsPrices.Bread * Discounts.Bread;
                         if (standardProducts != 0)
                         {
-                            standardPrice = (cartData.Quantitiy - freeProducts) * ProductsPrices.Bread;
+                            standardPrice = (cartData.Quantity - freeProducts) * ProductsPrices.Bread;
                         }
 
                         cartData.ProductPrice = standardPrice + discountedPrice;
@@ -80,13 +79,13 @@ namespace WebShop.Finance
                     else
                     {
                         discountedPrice = 1 * ProductsPrices.Bread * Discounts.Bread;
-                        int fullPrice = cartData.Quantitiy - 1;
+                        int fullPrice = cartData.Quantity - 1;
                         cartData.ProductPrice = (ProductsPrices.Bread * fullPrice) + discountedPrice;
                     }
                 }
                 else
                 {
-                    cartData.ProductPrice = cartData.Quantitiy * ProductsPrices.Bread;
+                    cartData.ProductPrice = cartData.Quantity * ProductsPrices.Bread;
                 }
             }
 

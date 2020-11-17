@@ -1,11 +1,15 @@
-﻿.product{
-   margin-right:70px;
+﻿.product {
+    margin-right: 70px;
 }
 
-.products-list{
-    display:inline-flex;
+.products-list {
+    display: inline-flex;
 }
 
 .show-info {
-   visibility:hidden;
+    visibility: hidden;
+}
+
+#milkPrice {
+    margin-top: 17px;
 }
