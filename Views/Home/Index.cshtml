@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h4 class="display-6 md-4">Please choose the product</h4>
+    <br />
+</div>
+
+<div class="products-list">
+    <div class="product text-center">
+        <p>Butter</p>
+        <div>
+            <img src="~/img/butter.jpg" />
+        </div>
+        <p>Price</p>
+        <p>0.80 $</p>
+        <form method="POST">
+            <button type="submit" asp-controller="Home" asp-action="UpdateCartButter">Add to Cart</button>
+        </form>
+    </div>
+    <div class="product text-center">
+        <p>Milk</p>
+        <img src="~/img/milk.jpg" />
+        <p>Price</p>
+        <p>1.15 $</p>
+        <form method="POST">
+            <button type="submit" asp-controller="Home" asp-action="UpdateCartMilk">Add to Cart</button>
+        </form>
+    </div>
+    <div class="product text-center">
+        <p>Bread</p>
+        <img src="~/img/bread.jpg" />
+        <p>Price</p>
+        <p>1.00 $</p>
+        <form method="POST">
+            <button type="submit" asp-controller="Home" asp-action="UpdateCartBread">Add to Cart</button>
+        </form>
+    </div>
+</div>
+<div class="show-info">
+    <p>Product is added to your cart!</p>
+</div>

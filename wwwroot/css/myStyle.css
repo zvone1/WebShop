@@ -1,0 +1,11 @@
+﻿.product{
+   margin-right:70px;
+}
+
+.products-list{
+    display:inline-flex;
+}
+
+.show-info {
+   visibility:hidden;
+}

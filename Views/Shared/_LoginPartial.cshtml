@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using Microsoft.AspNetCore.Http;
+
+@{  int butter = 0;
+    int milk = 0;
+    int bread = 0;
+
+    if (Context.Session.GetInt32("cartButter") != null)
+    {
+        butter = Context.Session.GetInt32("cartButter").Value;
+    }
+
+    if (Context.Session.GetInt32("cartMilk") != null)
+    {
+        milk = Context.Session.GetInt32("cartMilk").Value;
+    }
+
+    if (Context.Session.GetInt32("cartBread") != null)
+    {
+        bread = Context.Session.GetInt32("cartBread").Value;
+    }
+
+
+    int sumOfItems = butter + milk + bread;
+}
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        @*<li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>*@
+        <li class="nav-item">
+            <a class="nav-link text-primary h5" asp-controller="Home" asp-action="Cart">Go to Cart</a>
+        </li>
+        <li class="nav-item">
+            <p class="nav-link text-danger">@sumOfItems</p>
+        </li>
+    }
+</ul>
