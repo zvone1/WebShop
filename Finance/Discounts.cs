@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace WebShop.Finance
 {
     /// <summary>
-    /// Holds data for particular products.
+    /// Discounts values for products.
     /// </summary>
     internal static class Discounts
     {
